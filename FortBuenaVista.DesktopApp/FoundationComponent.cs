@@ -15,7 +15,7 @@ namespace FortBuenaVista.DesktopApp
             FillColor = Color.LightGreen;
         }
 
-        public static FoundationComponent FromCenterPoint(Hardpoint centerPoint)
+        public static FoundationComponent AtCenterPoint(Hardpoint centerPoint)
         {
             var hardpoints = new List<Hardpoint>();
             for (int x = centerPoint.X - 1; x <= centerPoint.X + 1; x++)

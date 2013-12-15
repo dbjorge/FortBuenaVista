@@ -22,10 +22,11 @@ namespace FortBuenaVista.DesktopApp
         {
             var dummyComponents = new IFortressComponent[]
             {
-                FoundationComponent.FromCenterPoint(new Hardpoint(1, 1)),
-                FoundationComponent.FromCenterPoint(new Hardpoint(3, 1)),
-                FoundationComponent.FromCenterPoint(new Hardpoint(1, 3)),
-                FoundationComponent.FromCenterPoint(new Hardpoint(3, 3))
+                FoundationComponent.AtCenterPoint(new Hardpoint(1, 1)),
+                FoundationComponent.AtCenterPoint(new Hardpoint(3, 1)),
+                FoundationComponent.AtCenterPoint(new Hardpoint(1, 3)),
+                FoundationComponent.AtCenterPoint(new Hardpoint(3, 3)),
+                PillarComponent.AtPoint(new Hardpoint(2, 2), 0)
             };
             return new FortressLayout(dummyComponents);
         }

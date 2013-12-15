@@ -14,7 +14,7 @@ namespace FortBuenaVista.DesktopApp.Test
         [Test]
         public void FromCenterPoint_AddsCorrectHardpointGrid()
         {
-            var foundation = FoundationComponent.FromCenterPoint(new Hardpoint(0, 0));
+            var foundation = FoundationComponent.AtCenterPoint(new Hardpoint(0, 0));
             Assert.AreEqual(9, foundation.Position.Hardpoints.Count);
             Assert.IsTrue(foundation.Position.Hardpoints.Contains(new Hardpoint(-1, -1)));
             Assert.IsTrue(foundation.Position.Hardpoints.Contains(new Hardpoint(-1,  0)));
@@ -30,21 +30,21 @@ namespace FortBuenaVista.DesktopApp.Test
         [Test]
         public void FromCenterPoint_ZLevelIsZero()
         {
-            var foundation = FoundationComponent.FromCenterPoint(new Hardpoint(0, 0));
+            var foundation = FoundationComponent.AtCenterPoint(new Hardpoint(0, 0));
             Assert.AreEqual(0, foundation.Position.ZLevel);
         }
 
         [Test]
         public void FromCenterPoint_ComponentTypeIsFloor()
         {
-            var foundation = FoundationComponent.FromCenterPoint(new Hardpoint(0, 0));
+            var foundation = FoundationComponent.AtCenterPoint(new Hardpoint(0, 0));
             Assert.AreEqual(FoundationComponentType.Floor, foundation.ComponentType);
         }
 
         [Test]
         public void CalculateBoundingBox_SortedInput_CalculatesCorrectCorner()
         {
-            var foundation = FoundationComponent.FromCenterPoint(new Hardpoint(0, 0));
+            var foundation = FoundationComponent.AtCenterPoint(new Hardpoint(0, 0));
             var testHardpoints = new Hardpoint[]
             {
                 new Hardpoint(-1, -1),
@@ -66,7 +66,7 @@ namespace FortBuenaVista.DesktopApp.Test
         [Test]
         public void CalculateBoundingBox_UnsortedInput_CalculatesCorrectCorner()
         {
-            var foundation = FoundationComponent.FromCenterPoint(new Hardpoint(0, 0));
+            var foundation = FoundationComponent.AtCenterPoint(new Hardpoint(0, 0));
             var testHardpoints = new Hardpoint[]
             {
                 new Hardpoint(0, 0),
@@ -88,7 +88,7 @@ namespace FortBuenaVista.DesktopApp.Test
         [Test]
         public void CalculateBoundingBox_UnsortedInput_CalculatesCorrectSize()
         {
-            var foundation = FoundationComponent.FromCenterPoint(new Hardpoint(0, 0));
+            var foundation = FoundationComponent.AtCenterPoint(new Hardpoint(0, 0));
             var testHardpoints = new Hardpoint[]
             {
                 new Hardpoint(-1, -1),
