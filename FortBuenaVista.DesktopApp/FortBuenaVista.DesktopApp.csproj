@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FortressLayout.cs" />
+    <Compile Include="FortressRenderer.cs" />
     <Compile Include="FoundationComponent.cs" />
     <Compile Include="Hardpoint.cs" />
     <Compile Include="IFortressComponent.cs" />

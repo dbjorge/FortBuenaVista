@@ -1,7 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +10,12 @@ namespace FortBuenaVista.DesktopApp
     public partial class MainForm : Form
     {
         private FortressLayout fortress;
+        private FortressRenderer renderer;
         public MainForm()
         {
             InitializeComponent();
             fortress = CreateDummyFortress();
+            renderer = new FortressRenderer();
         }
 
         private FortressLayout CreateDummyFortress()
@@ -32,8 +32,7 @@ namespace FortBuenaVista.DesktopApp
 
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
-            var gfx = e.Graphics;
-            gfx.DrawLine(Pens.BlueViolet,new Point(10,10),new Point(27,100) );
+            renderer.RenderInUiCoordinates(e.Graphics, fortress);
         }
     }
 }

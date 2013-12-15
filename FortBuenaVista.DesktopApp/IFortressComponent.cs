@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace FortBuenaVista.DesktopApp
 {
@@ -17,6 +20,15 @@ namespace FortBuenaVista.DesktopApp
     public interface IFortressComponent
     {
         Position Position { get; set; }
-        FoundationComponentType ComponentType { get; } // This is constant per component type
+        RectangleF BoundingBox { get; }
+        Color FillColor { get; }
+
+        // These are constants per component type
+        FoundationComponentType ComponentType { get; }
+    }
+
+    public interface IFortressComponentRenderer
+    {
+        void RenderInHardpointCoordinates(Graphics graphics, IFortressComponent component);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
@@ -8,6 +9,8 @@ namespace FortBuenaVista.DesktopApp.Test
     public class MockFortressComponent : IFortressComponent
     {
         public Position Position { get; set; }
+        public RectangleF BoundingBox { get { return new RectangleF(27, 27, 2, 2); } }
+        public Color FillColor { get { return Color.Black; } }
         public FoundationComponentType ComponentType { get; set; }
     }
 
