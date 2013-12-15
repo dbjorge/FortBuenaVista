@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortBuenaVista.DesktopApp", "FortBuenaVista.DesktopApp\FortBuenaVista.DesktopApp.csproj", "{4C9D6F1F-AF84-4B1C-9FBA-5DD59192FE54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortBuenaVista.DesktopApp.Test", "FortBuenaVista.DesktopApp.Test\FortBuenaVista.DesktopApp.Test.csproj", "{65EFFEA2-301E-429C-96A0-25E9D7A9E8FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72EE85D5-BC63-4662-95BF-C87710632FF2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.travis.nunit.sh = .travis.nunit.sh
+		.travis.yml = .travis.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C9D6F1F-AF84-4B1C-9FBA-5DD59192FE54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9D6F1F-AF84-4B1C-9FBA-5DD59192FE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9D6F1F-AF84-4B1C-9FBA-5DD59192FE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9D6F1F-AF84-4B1C-9FBA-5DD59192FE54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65EFFEA2-301E-429C-96A0-25E9D7A9E8FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65EFFEA2-301E-429C-96A0-25E9D7A9E8FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65EFFEA2-301E-429C-96A0-25E9D7A9E8FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65EFFEA2-301E-429C-96A0-25E9D7A9E8FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

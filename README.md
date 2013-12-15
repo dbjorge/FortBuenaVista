@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/brosmike/FortBuenaVista.png)](https://travis-ci.org/brosmike/FortBuenaVista)
+
 FortBuenaVista
 ==============
 
