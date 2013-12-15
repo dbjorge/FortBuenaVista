@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace FortBuenaVista.DesktopApp
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Paint(object sender, PaintEventArgs e)
+        {
+            var gfx = e.Graphics;
+            gfx.DrawLine(Pens.BlueViolet,new Point(10,10),new Point(27,100) );
         }
     }
 }
