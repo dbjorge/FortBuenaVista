@@ -19,10 +19,10 @@ namespace FortBuenaVista.DesktopApp.Test
     {
         private static IFortressComponent MakeTestComponentAt(int x, int y, int z)
         {
-            var testHardpoint = new Hardpoint(x, y);
+            var testHardpoint = new Hardpoint(x, y, z);
             var testComponent = new MockFortressComponent()
             {
-                Position = new Position(new Hardpoint[] { testHardpoint }, z),
+                Position = Position.OneByOneAt(testHardpoint),
                 ComponentType = FoundationComponentType.Else
             };
             return testComponent;
@@ -43,7 +43,7 @@ namespace FortBuenaVista.DesktopApp.Test
         public void EnumerableConstructor_AppendsToComponents()
         {
             var component = MakeTestComponentAt(0, 0, 0);
-            var fl = new FortressLayout(new IFortressComponent[] { component });
+            var fl = new FortressLayout(new[] { component });
 
             Assert.AreEqual(1, fl.ComponentsByZOrder.ToList().Count);
             Assert.AreSame(component, fl.ComponentsByZOrder.First());
@@ -53,36 +53,45 @@ namespace FortBuenaVista.DesktopApp.Test
         public void ComponentsByHardpoint_OneHardpointAdded_ReturnsListOfIt()
         {
             var component = MakeTestComponentAt(0, 0, 0);
-            var fl = new FortressLayout(new IFortressComponent[] { component });
+            var fl = new FortressLayout(new[] { component });
 
-            Assert.AreEqual(1, fl.ComponentsByHardpoint(new Hardpoint(0, 0)).ToList().Count);
+            Assert.AreEqual(1, fl.ComponentsByHardpoint(new Hardpoint(0, 0, 0)).ToList().Count);
         }
 
         [Test]
         public void ComponentsByHardpoint_NoMatchingHardpointAdded_ReturnsEmptyList()
         {
-            var testHardpoint = new Hardpoint(0, 0);
-            var component = new MockFortressComponent()
-            {
-                Position = new Position(new Hardpoint[] { testHardpoint }, 0),
-                ComponentType = FoundationComponentType.Else
-            };
-            var fl = new FortressLayout(new IFortressComponent[] { component });
+            var component = MakeTestComponentAt(0, 0, 0);
+            var fl = new FortressLayout(new[] { component });
 
-            Assert.IsEmpty(fl.ComponentsByHardpoint(new Hardpoint(27, 27)));
+            Assert.IsEmpty(fl.ComponentsByHardpoint(new Hardpoint(27, 27, 0)));
         }
 
         [Test]
-        public void ComponentsByHardpoint_SeveralMatchingHardpointsAdded_ReturnsAll()
+        public void ComponentsByHardpoint_AllMatchingHardpointsAdded_ReturnsAll()
         {
-            var fl = new FortressLayout(new IFortressComponent[]
+            var fl = new FortressLayout(new[]
             {
                 MakeTestComponentAt(0, 0, 0),
                 MakeTestComponentAt(0, 0, 0),
-                MakeTestComponentAt(0, 0, 1)
+                MakeTestComponentAt(0, 0, 0)
             });
 
-            Assert.AreEqual(3, fl.ComponentsByHardpoint(new Hardpoint(0, 0)).ToList().Count);
+            Assert.AreEqual(3, fl.ComponentsByHardpoint(new Hardpoint(0, 0, 0)).ToList().Count);
+        }
+
+        [Test]
+        public void ComponentsByHardpoint_SomeMatchingHardpointsAdded_ReturnsOnlyMatches()
+        {
+            var fl = new FortressLayout(new[]
+            {
+                MakeTestComponentAt(0, 0, 0),
+                MakeTestComponentAt(0, 0, 2),
+                MakeTestComponentAt(0, 0, 0)
+            });
+
+            Assert.AreEqual(2, fl.ComponentsByHardpoint(new Hardpoint(0, 0, 0)).ToList().Count);
+            Assert.AreEqual(1, fl.ComponentsByHardpoint(new Hardpoint(0, 0, 2)).ToList().Count);
         }
     }
 }

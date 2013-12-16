@@ -17,9 +17,9 @@ namespace FortBuenaVista.DesktopApp
             FillColor = Color.Aquamarine;
         }
 
-        public static PillarComponent AtPoint(Hardpoint point, int zLevel)
+        public static PillarComponent AtPoint(Hardpoint point)
         {
-            return new PillarComponent(new Position(new[] { point }, zLevel));
+            return new PillarComponent(Position.OneByOneAt(point));
         }
 
         private Position _position;

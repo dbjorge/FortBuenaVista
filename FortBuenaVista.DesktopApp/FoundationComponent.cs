@@ -9,7 +9,6 @@ namespace FortBuenaVista.DesktopApp
     {
         public FoundationComponent(Position p)
         {
-            Debug.Assert(p.ZLevel == 0);
             Position = p;
             ComponentType = FoundationComponentType.Floor;
             FillColor = Color.LightGreen;
@@ -17,16 +16,7 @@ namespace FortBuenaVista.DesktopApp
 
         public static FoundationComponent AtCenterPoint(Hardpoint centerPoint)
         {
-            var hardpoints = new List<Hardpoint>();
-            for (int x = centerPoint.X - 1; x <= centerPoint.X + 1; x++)
-            {
-                for (int y = centerPoint.Y - 1; y <= centerPoint.Y + 1; y++)
-                {
-                    hardpoints.Add(new Hardpoint(x, y));
-                }
-            }
-            var position = new Position(hardpoints, 0);
-            return new FoundationComponent(position);
+            return new FoundationComponent(Position.ThreeByThreeCenteredAt(centerPoint));
         }
 
         private Position _position;

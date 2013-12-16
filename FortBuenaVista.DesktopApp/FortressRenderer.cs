@@ -8,14 +8,17 @@ namespace FortBuenaVista.DesktopApp
     {
         public FortressRenderer()
         {
-            HardpointViewingWindow = new RectangleF(-10, -10, 20, 20);
+            HardpointViewingWindow = new RectangleF(-10f, -10f, 20f, 20f);
+            ScaleFactor = 40f;
         }
         public RectangleF HardpointViewingWindow { get; set; }
+        public float ScaleFactor { get; set; }
+
         public void RenderInUiCoordinates(Graphics graphics, FortressLayout fortress)
         {
             var originalState = graphics.Save();
             graphics.TranslateTransform(-HardpointViewingWindow.X, -HardpointViewingWindow.Y);
-            graphics.ScaleTransform(50, 50);
+            graphics.ScaleTransform(ScaleFactor, ScaleFactor);
             RenderInHardpointCoordinates(graphics, fortress);
             graphics.Restore(originalState);
         }
@@ -24,7 +27,8 @@ namespace FortBuenaVista.DesktopApp
         {
             var brush = new SolidBrush(Color.Black);
             var pen = Pens.Black;
-            pen.ScaleTransform((float) (1.0 / 25.0), (float) (1.0 / 25.0), MatrixOrder.Append);
+            var penScaleFactor = 1f / (ScaleFactor / 2f);
+            pen.ScaleTransform(penScaleFactor, penScaleFactor, MatrixOrder.Append);
 
             // Perf optimization for later: don't render components outside the viewing window
             foreach (var component in fortress.ComponentsByZOrder)
